@@ -5,3 +5,5 @@ __pycache__/
 data/raw/
 *.db
 *.sqlite
+/data/
+/web/src/data/
