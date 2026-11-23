@@ -6,16 +6,22 @@ const DATA_DIR = path.join(process.cwd(), "src", "data");
 const SUFFIX = "_dailypoint.json";
 const RANKING_KEY = "100";
 const TOP_N = 20;
+const DAILY_PAGES = 30; // 日別ページとして公開する日数（新しい順）
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
-// データがある日付の一覧（新しい順）
-export async function listDates(): Promise<string[]> {
+// データがある全日付（新しい順）。月別・年別の集計に使う
+export async function listAllDates(): Promise<string[]> {
   const files = await fs.readdir(DATA_DIR);
   return files
     .filter((f) => f.endsWith(SUFFIX))
     .map((f) => f.slice(0, -SUFFIX.length))
     .sort()
     .reverse();
+}
+
+// 日別ページとして公開する日付
+export async function listDates(): Promise<string[]> {
+  return (await listAllDates()).slice(0, DAILY_PAGES);
 }
 
 // 画面に出す分（上位20件）だけを返す
