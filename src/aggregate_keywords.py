@@ -75,10 +75,11 @@ def count_keywords(novels, top_n):
             # 1作品のキーワードを渡すと、それぞれの数が +1 される。
             counter.update(extract_keywords(novel["keyword"]))
 
-    # most_common() は、出現数の多い順に並べたリストを返す。
+    # 出現数の多い順。同数のときはキーワード名の順にそろえる
+    # （set の並びは実行のたびに変わるので、そろえないと出力がぶれる）
     return [
         {"keyword": keyword, "count": count}
-        for keyword, count in counter.most_common()
+        for keyword, count in sorted(counter.items(), key=lambda item: (-item[1], item[0]))
     ]
 
 
