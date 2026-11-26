@@ -10,6 +10,7 @@ import { useState } from "react";
 type DateCalendarProps = {
   dates: string[]; // 選択できる日付の一覧（例: ["2026-11-25", "2026-11-24"]）
   selectedDate: string; // 現在表示している日付
+  hrefPrefix?: string; // 指定すると日付リンクを /network/YYYY-MM-DD の形にする
 };
 
 // カレンダーの曜日見出し
@@ -18,6 +19,7 @@ const WEEKDAYS = ["日", "月", "火", "水", "木", "金", "土"];
 export default function DateCalendar({
   dates,
   selectedDate,
+  hrefPrefix = "",
 }: DateCalendarProps) {
   // 選択中の日付から、最初に表示する年月を決める
   // 時刻を付けて、日付がタイムゾーンの影響でずれにくくしている
@@ -115,7 +117,7 @@ export default function DateCalendar({
               {isAvailable ? (
                 // データがある日だけ、日別ページへのリンクにする
                 <Link
-                  href={`/${date}`}
+                  href={`${hrefPrefix}/${date}`}
                   aria-current={isSelected ? "date" : undefined}
                   className={`block rounded py-1 underline ${
                     isSelected

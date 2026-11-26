@@ -17,6 +17,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             トップページ
           </Link>
           {" ／ "}
+          <Link href="/network" className="underline">
+            共起ネットワーク
+          </Link>
+          {" ／ "}
           <Link href="/about" className="underline">
             このサイトについて
           </Link>
