@@ -8,6 +8,7 @@ API_URL = "https://api.syosetu.com/novelapi/api/"
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 JST = timezone(timedelta(hours=9))
+USER_AGENT = "narou-keyword-trend/1.0 (+https://github.com/tarotrot/narou-trend)"
 
 ORDER = "dailypoint"  # 日間ポイントの高い順
 LIMIT = 500  # 1回のリクエストで取れる最大件数
@@ -22,6 +23,7 @@ def fetch_ranking(order=ORDER, limit=LIMIT):
             "order": order,
             "lim": limit,
         },
+        headers={"User-Agent": USER_AGENT},
         timeout=30,
     )
     res.raise_for_status()
