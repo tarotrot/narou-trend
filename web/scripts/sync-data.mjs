@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 // リポジトリのルート
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
-const SRC = path.join(root, "data", "aggregated");
+const SRC = path.join(root, "data", "aggregated", "dailypoint");
 const DEST = path.join(root, "web", "src", "data");
 const SUFFIX = "_dailypoint.json";
 

@@ -14,7 +14,7 @@ from pathlib import Path  # ファイルやフォルダの場所を扱う
 # どのフォルダから実行しても、同じ場所を指せるようにしている。
 ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"  # 読み込む生データの置き場所
-OUT_DIR = ROOT / "data" / "aggregated"  # 集計結果の書き出し先
+OUT_DIR = ROOT / "data" / "aggregated" / "dailypoint"  # 集計結果の書き出し先
 
 # --- 集計の設定 -------------------------------------------------
 # 上位何件で集計するか。(100, 500) なら、
